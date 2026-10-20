@@ -1,0 +1,8 @@
+numpy
+scipy
+scikit-image
+fonttools
+uharfbuzz
+skia-pathops
+pillow
+edge-tts
