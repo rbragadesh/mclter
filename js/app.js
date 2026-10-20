@@ -92,7 +92,14 @@ window.__mc = app;
 render();
 
 // ---------------------------------------------------------------- offline support
-if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+// sandboxed previews can throw just for touching navigator.serviceWorker, so guard the whole block
+try {
+  if ('serviceWorker' in navigator && navigator.serviceWorker && location.protocol !== 'file:') registerWorker();
+} catch {
+  // no offline mode here; the app itself still runs
+}
+
+function registerWorker() {
   navigator.serviceWorker
     .register('./sw.js')
     .then((reg) => {
