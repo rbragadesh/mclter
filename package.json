@@ -1,0 +1,18 @@
+{
+  "name": "math-climb",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Visual maths practice web app for grades 1–2, installable on iPad.",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test \"tests/unit/*.test.js\"",
+    "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.js\"",
+    "lint": "eslint js tests scripts sw.js",
+    "icons": "python3 scripts/make_icons.py",
+    "bump": "node scripts/bump-sw.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}
