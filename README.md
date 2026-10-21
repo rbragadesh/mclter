@@ -58,18 +58,18 @@ Progress lives in the browser storage of the app on that iPad. The Home Screen a
 keep **separate** storage, so always open it the same way, and use *Parent → Export progress*
 now and then as a backup (also the way to move to a new iPad).
 
-## Publishing
+## Publishing (free, GitHub Pages)
 
-**Do not merge this branch into the math app's branch** (`claude/math-learning-ipad-app-xjywba`,
-the repository's default branch): both apps have files with the same names (`index.html`,
-`sw.js`, `README.md`, …), so a merge would overwrite one app with the other, and a GitHub
-repository can only publish one Pages site.
-
-To publish the Tamil app on its own, put it in its own repository (for example `tamil-padi`),
-then in that repository: **Settings → Pages → Source: GitHub Actions**. The *Deploy to GitHub
-Pages* workflow builds, tests and publishes on every push to its default branch (`main`).
+1. In this repository: **Settings → Pages → Source: GitHub Actions** (one time).
+2. The *Deploy to GitHub Pages* workflow builds, tests and publishes on every push to `main`
+   (or run it by hand from the Actions tab). The address is `https://rbragadesh.github.io/tamil-padi/`.
 
 Any static host works too: `npm run build` and upload the `dist/` folder.
+
+This app is kept separate from the maths app (`rbragadesh/mclter`). Both are served from
+`rbragadesh.github.io`, so they share the browser's storage on the iPad; each keeps its own
+data under its own names (`tamil-padi-progress-v1` and `tamil-*` caches here) and only ever
+clears its own caches.
 
 ## Honest limitations
 
