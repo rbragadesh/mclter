@@ -279,12 +279,17 @@ test('progress survives a reload; backup code restores it', async () => {
 });
 
 test('layouts fit iPad portrait, phone width and dark mode', async () => {
-  for (const [label, viewport, colorScheme] of [
+  // fonts differ per machine (SF Rounded on iPad, DejaVu on Linux CI), so also force a wide one
+  const WIDE_FONT = ":root { --font: 'DejaVu Sans', 'Liberation Sans', Verdana, sans-serif !important }";
+  for (const [label, viewport, colorScheme, css] of [
     ['portrait', IPAD_PORTRAIT, 'light'],
     ['phone', { width: 390, height: 844 }, 'light'],
     ['dark', IPAD_LANDSCAPE, 'dark'],
+    ['wide-font', IPAD_LANDSCAPE, 'light', WIDE_FONT],
+    ['wide-font-small-ipad', { width: 1024, height: 768 }, 'light', WIDE_FONT],
   ]) {
     const { ctx, page } = await open({ viewport, colorScheme });
+    if (css) await page.addStyleTag({ content: css });
     for (const route of ['', 'skill/mult', 'practice/story', 'practice/frac', 'learn/time', 'play', 'test/weekly']) {
       await go(page, route);
       await page.waitForTimeout(250);

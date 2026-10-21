@@ -389,10 +389,10 @@ a.action.hero {
 }
 .tile {
   display: grid;
-  grid-template-columns: 72px 1fr;
+  grid-template-columns: 60px minmax(0, 1fr);
   align-items: center;
-  gap: 12px;
-  padding: 14px;
+  gap: 10px;
+  padding: 14px 12px;
   border: 0;
   border-radius: var(--r);
   background: var(--card);
@@ -401,16 +401,16 @@ a.action.hero {
   min-height: 104px;
 }
 .tile .ico {
-  width: 72px;
-  height: 72px;
+  width: 60px;
+  height: 60px;
   border-radius: 14px;
   background: color-mix(in srgb, var(--tint) 16%, var(--card));
   display: grid;
   place-items: center;
 }
 .tile .ico .viz {
-  width: 58px;
-  height: 58px;
+  width: 50px;
+  height: 50px;
 }
 .tile > span:last-child {
   display: block;
@@ -425,7 +425,9 @@ a.action.hero {
 }
 .tile b {
   display: block;
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 1.45vw, 1.15rem);
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 .dots {
   display: flex;

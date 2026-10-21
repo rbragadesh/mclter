@@ -1,6 +1,6 @@
 // Offline support: every file is cached on install, then served cache-first.
 // VERSION is a hash of the files below (npm run bump), so any change reaches installed iPads.
-const VERSION = 'mathclimb-823f184b20';
+const VERSION = 'mathclimb-cb355bbd9b';
 const ASSETS = [
   './',
   './index.html',
