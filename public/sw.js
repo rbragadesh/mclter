@@ -16,7 +16,9 @@ self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches
       .keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== SHELL && k !== AUDIO).map((k) => caches.delete(k))))
+      // Only clean up this app's own old caches: other apps on the same origin
+      // (e.g. another GitHub Pages site of the same account) have caches too.
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith('tamil-') && k !== SHELL && k !== AUDIO).map((k) => caches.delete(k))))
       .then(() => self.clients.claim()),
   );
 });
